@@ -1,17 +1,36 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
-class FriendsList extends StatefulWidget {
-  // added based on debugger recommendation
-  const FriendsList({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  @override
-  State<FriendsList> createState() => _FriendsList();
-}
+  // Create Widgets of friends on a list of friend names
+  // List<Widget> friendToWidget(List<String> friends) {
+  //   final List<ListTile> friendsWidget = List.empty();
+  //   for(var i = 0; i < friends.length; i++){
+  //     friendsWidget.add(
+  //       ListTile(title: Text(friends[i])
+  //         )
+  //       );
+  //   }
+  //   return friendsWidget;
+  // }
 
-class _FriendsList extends State<FriendsList> {
   @override
   Widget build(BuildContext context) {
     const title = 'My Friends';
+
+    // create a Map() to store a list of friends
+    final List<String> friendList = [
+      "Advik", "Aranya", "Avighna",
+      "Christin", "Hilmi", "Rhea"
+    ];
+
+    final List<Widget> friendListWidget = List.generate(
+      friendList.length,
+        (i) => ListTile(
+          title: Text(friendList[i])
+      )
+    );
 
     return MaterialApp(
       title: title,
@@ -20,24 +39,9 @@ class _FriendsList extends State<FriendsList> {
           title: const Text(title),
         ),
         body: ListView(
-          children: const <Widget>[
-            ListTile(
-              // leading: Icon(Icons.map),
-              title: Text('Friend 1'),
-            ),
-            ListTile(
-              // leading: Icon(Icons.photo_album),
-              title: Text('Friend 2'),
-            ),
-            ListTile(
-              // leading: Icon(Icons.phone),
-              title: Text('Friend 3'),
-            ),
-          ],
+          children: friendListWidget
         ),
       ),
     );
   }
 }
-
-
