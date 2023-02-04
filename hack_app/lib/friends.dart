@@ -7,9 +7,6 @@ class FriendsList extends StatefulWidget {
 
 class _FriendsList extends State<FriendsList> {
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      children: [],
-    ));
+    return Container();
   }
 }
