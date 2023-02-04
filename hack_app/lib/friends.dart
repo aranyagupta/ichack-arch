@@ -19,12 +19,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const title = 'My Friends';
 
-    // create a Map() to store a list of friends
+    // a list of friends
     final List<String> friendList = [
       "Advik", "Aranya", "Avighna",
       "Christin", "Hilmi", "Rhea"
     ];
 
+    // map a list of friends into a list of widgets
     final List<Widget> friendListWidget = List.generate(
       friendList.length,
         (i) => ListTile(
