@@ -69,13 +69,14 @@ class _LifePlot extends State<LifePlot> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(255, 115, 132, 146)),
+          borderRadius: BorderRadius.circular(10), color: Colors.transparent),
       margin: EdgeInsets.all(10),
       child: SizedBox(
-        child: Text("Plot"),
-        height: 170,
-        width: 300,
+        child: Container(
+          child: Image.asset("assets/images/line-graph.png"),
+        ),
+        height: 300,
+        width: 400,
       ),
     );
   }
