@@ -10,7 +10,7 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.blue,
       child: Container(
-        decoration: BoxDecoration(color: Color.fromARGB(255, 113, 112, 112)),
+        decoration: BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
         child: ListView(padding: EdgeInsets.all(20), children: <Widget>[
           Builder(builder: ((context) {
             return ListTile(
@@ -62,6 +62,47 @@ class MyDrawer extends StatelessWidget {
   }
 }
 
+class LifePlot extends StatefulWidget {
+  @override
+  _LifePlot createState() => _LifePlot();
+}
+
+class _LifePlot extends State<LifePlot> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(255, 115, 132, 146)),
+      margin: EdgeInsets.all(10),
+      child: SizedBox(
+        child: Text("Plot"),
+        height: 170,
+        width: 300,
+      ),
+    );
+  }
+}
+
+class Leaderboard extends StatefulWidget {
+  @override
+  State<Leaderboard> createState() => _Leaderboard();
+}
+
+class _Leaderboard extends State<Leaderboard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        decoration: BoxDecoration(
+            color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+        child: SizedBox(
+          height: 200,
+          width: 300,
+          child: Text("Leaderboard"),
+        ));
+  }
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -83,9 +124,14 @@ class MyApp extends StatelessWidget {
             ]),
         drawer: MyDrawer(),
         body: Center(
-            child: Column(children: [
-          ElevatedButton(onPressed: () {}, child: Text("Start journey"))
-        ])),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+              ElevatedButton(onPressed: () {}, child: Text("Start journey")),
+              LifePlot(),
+              Leaderboard()
+            ])),
       ),
     );
   }
