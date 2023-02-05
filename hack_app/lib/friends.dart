@@ -10,7 +10,7 @@ class FriendsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'My Friends';
+    const title = 'Friends';
 
     // map a list of friends into a list of widgets
     final List<Widget> friendListWidget = List.generate(
