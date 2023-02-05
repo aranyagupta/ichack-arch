@@ -14,21 +14,32 @@ class HistoryPage extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        drawer: MyDrawer(),
-        body: Column(children: const [NetTime(), JourneyTable()]),
+        body: Column(children: const [NetTimeText(), NetTimeValue(), JourneyTable()]),
       ),
     );
   }
 }
 
-class NetTime extends StatelessWidget {
-  const NetTime({super.key});
+class NetTimeText extends StatelessWidget {
+  const NetTimeText({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       'Total Time Gained: ',
-      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
+      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.0),
+    );
+  }
+}
+
+class NetTimeValue extends StatelessWidget {
+  const NetTimeValue({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '34 secs',
+      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 4.0),
     );
   }
 }
