@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hack_app/friends.dart';
 import 'package:hack_app/history_page.dart';
+import 'package:hack_app/profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -123,7 +124,7 @@ class MyApp extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => FriendsList()),
+                                builder: (context) => ProfilePage()),
                           );
                         },
                       );
