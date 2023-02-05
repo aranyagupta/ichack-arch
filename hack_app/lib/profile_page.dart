@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:hack_app/main.dart';
 
 // ignore_for_file: prefer_const_literals_to_create_immutables
 class ProfilePage extends StatelessWidget {
@@ -10,6 +11,7 @@ class ProfilePage extends StatelessWidget {
     return MaterialApp(
       title: 'My Profile',
       home: Scaffold(
+        drawer: Drawer(child: MyDrawer()),
         appBar: AppBar(
           backgroundColor: Colors.teal,
           title: Center(
@@ -20,9 +22,7 @@ class ProfilePage extends StatelessWidget {
           children: <Widget>[
             Container(
               height: 250,
-              decoration: BoxDecoration(
-                color: Colors.teal
-              ),
+              decoration: BoxDecoration(color: Colors.teal),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +35,8 @@ class ProfilePage extends StatelessWidget {
                         minRadius: 60.0,
                         child: CircleAvatar(
                           radius: 50.0,
-                          backgroundImage: NetworkImage('assets/images/stephanie-photo.jpg'),
+                          backgroundImage:
+                              NetworkImage('assets/images/stephanie-photo.jpg'),
                         ),
                       ),
                     ],
