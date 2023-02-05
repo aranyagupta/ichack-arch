@@ -14,12 +14,12 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.blue,
       child: Container(
-        decoration: BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
-        child: ListView(padding: EdgeInsets.all(20), children: <Widget>[
+        decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
+        child: ListView(padding: const EdgeInsets.all(20), children: <Widget>[
           Builder(builder: ((context) {
             return ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
               onTap: () {
                 Navigator.push(
                   context,
@@ -30,24 +30,24 @@ class MyDrawer extends StatelessWidget {
           })),
           Builder(builder: ((context) {
             return ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Friends"),
+              leading: const Icon(Icons.contacts),
+              title: const Text("Friends"),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FriendsList()),
+                  MaterialPageRoute(builder: (context) => const FriendsList()),
                 );
               },
             );
           })),
           Builder(builder: ((context) {
             return ListTile(
-              leading: Icon(Icons.history),
-              title: Text("Journey History"),
+              leading: const Icon(Icons.history),
+              title: const Text("Journey History"),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HistoryPage()),
+                  MaterialPageRoute(builder: (context) => const HistoryPage()),
                 );
               },
             );
@@ -69,18 +69,20 @@ class _LifePlot extends State<LifePlot> {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(255, 115, 132, 146)),
-      margin: EdgeInsets.all(10),
-      child: SizedBox(
-        child: Text("Plot"),
+          color: const Color.fromARGB(255, 115, 132, 146)),
+      margin: const EdgeInsets.all(10),
+      child: const SizedBox(
         height: 170,
         width: 300,
+        child: Text("Plot"),
       ),
     );
   }
 }
 
 class Leaderboard extends StatefulWidget {
+  const Leaderboard({super.key});
+
   @override
   State<Leaderboard> createState() => _Leaderboard();
 }
@@ -91,7 +93,7 @@ class _Leaderboard extends State<Leaderboard> {
     return Container(
         decoration: BoxDecoration(
             color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-        child: SizedBox(
+        child: const SizedBox(
           height: 200,
           width: 300,
           child: Text("Leaderboard"),
@@ -108,7 +110,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.teal,
-            title: Text(
+            title: const Text(
               'Lifer',
               style: TextStyle(
                 fontSize: 35,
@@ -118,11 +120,11 @@ class MyApp extends StatelessWidget {
             ),
             actions: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(right: 20.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Builder(
                     builder: (context) {
                       return IconButton(
-                        icon: Icon(Icons.person),
+                        icon: const Icon(Icons.person),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -150,28 +152,22 @@ class MyApp extends StatelessWidget {
                             builder: (context) => openBrowserTab()),
                       );
                     },
-                    child: Text("Connect to Terra"));
+                    child: const Text("Connect to Terra"));
               }),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                   child: journey_started
                       ? ElevatedButton(
                           onPressed: () {
-                            setState() {
-                              journey_started = false;
-                            }
                           },
-                          child: Text("Stop journey"))
+                          child: const Text("Stop journey"))
                       : ElevatedButton(
-                          child: Text("Start journey"),
+                          child: const Text("Start journey"),
                           onPressed: () {
-                            setState() {
-                              journey_started = true;
-                            }
                           },
                         )),
               LifePlot(),
-              Leaderboard()
+              const Leaderboard()
             ])),
       ),
     );
