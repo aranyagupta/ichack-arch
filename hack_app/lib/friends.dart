@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FriendsList extends StatelessWidget {
+  const FriendsList({super.key});
 
-  // Create Widgets of friends on a list of friend names
-  // List<Widget> friendToWidget(List<String> friends) {
-  //   final List<ListTile> friendsWidget = List.empty();
-  //   for(var i = 0; i < friends.length; i++){
-  //     friendsWidget.add(
-  //       ListTile(title: Text(friends[i])
-  //         )
-  //       );
-  //   }
-  //   return friendsWidget;
-  // }
 
   @override
   Widget build(BuildContext context) {
