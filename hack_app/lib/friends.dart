@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import './data_friends.dart';
-=======
 import 'package:hack_app/main.dart';
->>>>>>> 48ed8743391912c00d9f4c0aed04d464c5c67b23
 
 class FriendsList extends StatelessWidget {
   const FriendsList({super.key});
