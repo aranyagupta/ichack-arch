@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hack_app/main.dart';
+import 'package:hack_app/log_in.dart';
 
 // ignore_for_file: prefer_const_literals_to_create_immutables
 class ProfilePage extends StatelessWidget {
@@ -10,14 +11,15 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Profile',
+      theme: ThemeData(fontFamily: 'Raleway'),
       home: Scaffold(
-        drawer: Drawer(child: MyDrawer()),
         appBar: AppBar(
           backgroundColor: Colors.teal,
           title: Center(
             child: const Text('My Profile'),
           ),
         ),
+        drawer: MyDrawer(),
         body: ListView(
           children: <Widget>[
             Container(
@@ -55,6 +57,50 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
+            Column(
+              children: <Widget>[
+                Card(
+                    child: ListTile(
+                        leading: Icon(Icons.create_rounded),
+                        title: Text('Edit profile information'),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.arrow_forward_ios_rounded),
+                          ],
+                        ))),
+                Card(
+                    child: ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text('Settings'),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.arrow_forward_ios_rounded),
+                          ],
+                        ))),
+                Builder(builder: ((context) {
+                  return Card(
+                    child: ListTile(
+                        leading: Icon(Icons.logout_rounded),
+                        title: Text('Log out'),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LogInPage()),
+                          );
+                        },
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.arrow_forward_ios_rounded),
+                          ],
+                        )),
+                  );
+                })),
+              ],
+            )
           ],
         ),
       ),

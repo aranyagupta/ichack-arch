@@ -10,12 +10,12 @@ class FriendsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'My Friends';
+    const title = 'Friends';
 
     // map a list of friends into a list of widgets
     final List<Widget> friendListWidget = List.generate(
       friendList.length,
-        (i) => ListTile(
+        (i) => Card(child: ListTile(
           leading: Icon(Icons.person),
           title: Text(
             friendList[i],
@@ -31,15 +31,20 @@ class FriendsList extends StatelessWidget {
               Icon(Icons.more_horiz)
             ],
           )
+        )
       )
     );
 
     return MaterialApp(
-      // TO DO: search bar to add friends
       title: title,
+      theme: ThemeData(
+        primaryColor: Colors.teal,
+        fontFamily: 'Raleway'
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(title),
+          backgroundColor: Colors.teal,
         ),
         drawer: MyDrawer(),
         body: Column(

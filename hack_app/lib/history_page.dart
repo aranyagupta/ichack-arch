@@ -6,14 +6,17 @@ void main() => runApp(const HistoryPage());
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
 
-  static const String _title = 'My History';
+  static const String _title = 'Journey History';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+      theme: ThemeData(fontFamily: 'Raleway'),
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
+        appBar: AppBar(
+          title: const Text(_title),
+          backgroundColor: Colors.teal,),
         drawer: MyDrawer(),
         body: Column(
             children: const [NetTimeText(), NetTimeValue(), JourneyTable()]),

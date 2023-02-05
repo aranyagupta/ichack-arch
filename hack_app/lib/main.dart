@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:hack_app/friends.dart';
 import 'package:hack_app/history_page.dart';
@@ -26,7 +28,7 @@ class MyDrawer extends StatelessWidget {
           })),
           Builder(builder: ((context) {
             return ListTile(
-              title: Text("My Friends"),
+              title: Text("Friends"),
               onTap: () {
                 Navigator.push(
                   context,
@@ -37,22 +39,11 @@ class MyDrawer extends StatelessWidget {
           })),
           Builder(builder: ((context) {
             return ListTile(
-              title: Text("My History"),
+              title: Text("Journey History"),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HistoryPage()),
-                );
-              },
-            );
-          })),
-          Builder(builder: ((context) {
-            return ListTile(
-              title: Text("Settings"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FriendsList()),
                 );
               },
             );
@@ -109,10 +100,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Raleway'),
       home: Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            title: Text('Life span tracker'),
+            backgroundColor: Colors.teal,
+            title: Text(
+              'Lifer',
+              style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+              ),
             actions: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right: 20.0),
