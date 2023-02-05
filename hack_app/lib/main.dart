@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:hack_app/friends.dart';
 import 'package:hack_app/history_page.dart';
@@ -102,7 +104,14 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.teal,
-            title: Text('Lifer'),
+            title: Text(
+              'Lifer',
+              style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+              ),
             actions: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right: 20.0),
