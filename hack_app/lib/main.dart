@@ -14,11 +14,13 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.blue,
       child: Container(
-        decoration: BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
-        child: ListView(padding: EdgeInsets.all(20), children: <Widget>[
+        decoration:
+            const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
+        child: ListView(padding: const EdgeInsets.all(20), children: <Widget>[
           Builder(builder: ((context) {
             return ListTile(
-              title: Text("Home"),
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
               onTap: () {
                 Navigator.push(
                   context,
@@ -29,22 +31,24 @@ class MyDrawer extends StatelessWidget {
           })),
           Builder(builder: ((context) {
             return ListTile(
-              title: Text("Friends"),
+              leading: const Icon(Icons.contacts),
+              title: const Text("Friends"),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FriendsList()),
+                  MaterialPageRoute(builder: (context) => const FriendsList()),
                 );
               },
             );
           })),
           Builder(builder: ((context) {
             return ListTile(
-              title: Text("Journey History"),
+              leading: const Icon(Icons.history),
+              title: const Text("Journey History"),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HistoryPage()),
+                  MaterialPageRoute(builder: (context) => const HistoryPage()),
                 );
               },
             );
@@ -65,43 +69,88 @@ class _LifePlot extends State<LifePlot> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.transparent),
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(255, 115, 132, 146)),
       margin: EdgeInsets.all(10),
       child: SizedBox(
-        child: Column(children: [
-          Text("Net change in lifespan today:"),
-          Text(
-            "30s",
-            style: TextStyle(
-                color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            child: Image.asset("assets/images/line-graph.png"),
-          )
-        ]),
-        height: 300,
-        width: 400,
+        child: Text("Plot"),
+        height: 170,
+        width: 300,
       ),
     );
   }
 }
 
-class Leaderboard extends StatefulWidget {
-  @override
-  State<Leaderboard> createState() => _Leaderboard();
-}
+class LeaderboardText extends StatelessWidget {
+  const LeaderboardText({super.key});
 
-class _Leaderboard extends State<Leaderboard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-        child: SizedBox(
-          height: 200,
-          width: 300,
-          child: Text("Leaderboard"),
+    return Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          'Leaderboard',
+          style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.2),
         ));
+  }
+}
+
+class LeaderboardTable extends StatelessWidget {
+  const LeaderboardTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DataTable(
+      columns: const <DataColumn>[
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Rank',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Name',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Time Gained/Lost',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ],
+      rows: const <DataRow>[
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('1')),
+            DataCell(Text('Rhea')),
+            DataCell(Text('+19023 secs', style: TextStyle(color: Colors.green)))
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('2')),
+            DataCell(Text('Christin')),
+            DataCell(Text('+4673 secs', style: TextStyle(color: Colors.green)))
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('3')),
+            DataCell(Text('Elijah')),
+            DataCell(Text('+2946 secs', style: TextStyle(color: Colors.green)))
+          ],
+        ),
+      ],
+    );
   }
 }
 
@@ -136,7 +185,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.teal,
-            title: Text(
+            title: const Text(
               'Lifer',
               style: TextStyle(
                 fontSize: 35,
@@ -146,11 +195,11 @@ class MyApp extends StatelessWidget {
             ),
             actions: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(right: 20.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Builder(
                     builder: (context) {
                       return IconButton(
-                        icon: Icon(Icons.person),
+                        icon: const Icon(Icons.person),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -174,15 +223,16 @@ class MyApp extends StatelessWidget {
                     onPressed: () {
                       openBrowserTab();
                     },
-                    child: Text("Connect to Terra"));
+                    child: const Text("Connect to Terra"));
               }),
-              SizedBox(
-                height: 10,
-              ),
-              Start(),
               SizedBox(height: 10),
+              Start(),
               LifePlot(),
-              Leaderboard()
+              Container(
+                  child: Text("LEADERBOARD",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18))),
+              LeaderboardTable()
             ])),
       ),
     );
