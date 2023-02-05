@@ -1,43 +1,48 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
+import './data_friends.dart';
+import 'package:hack_app/main.dart';
 
-class FriendsList extends StatefulWidget {
-  // added based on debugger recommendation
+class FriendsList extends StatelessWidget {
   const FriendsList({super.key});
 
-  @override
-  State<FriendsList> createState() => _FriendsList();
-}
 
-class _FriendsList extends State<FriendsList> {
   @override
   Widget build(BuildContext context) {
     const title = 'My Friends';
 
+    // map a list of friends into a list of widgets
+    final List<Widget> friendListWidget = List.generate(
+      friendList.length,
+        (i) => ListTile(
+          // ignore: prefer_const_constructors
+          leading: Icon(Icons.person),
+          title: Text(
+            friendList[i],
+            // ignore: prefer_const_constructors
+            style: TextStyle(
+              fontFamily: "Raleway"
+            ),
+          ),
+          // subtitle:
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.more_horiz)
+            ],
+          )
+      )
+    );
+
     return MaterialApp(
+      // TO DO: search bar to add friends
       title: title,
       home: Scaffold(
         appBar: AppBar(
           title: const Text(title),
         ),
-        body: ListView(
-          children: const <Widget>[
-            ListTile(
-              // leading: Icon(Icons.map),
-              title: Text('Friend 1'),
-            ),
-            ListTile(
-              // leading: Icon(Icons.photo_album),
-              title: Text('Friend 2'),
-            ),
-            ListTile(
-              // leading: Icon(Icons.phone),
-              title: Text('Friend 3'),
-            ),
-          ],
-        ),
+        drawer: MyDrawer(),
+        body: ListView(children: friendListWidget),
       ),
     );
   }
 }
-
-

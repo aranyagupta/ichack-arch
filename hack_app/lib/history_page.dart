@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_app/main.dart';
 
 void main() => runApp(const HistoryPage());
 
@@ -13,7 +14,9 @@ class HistoryPage extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: Column(children: const [NetTimeText(), NetTimeValue(), JourneyTable()]),
+        drawer: MyDrawer(),
+        body: Column(
+            children: const [NetTimeText(), NetTimeValue(), JourneyTable()]),
       ),
     );
   }
