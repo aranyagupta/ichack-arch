@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_app/main.dart';
 
 void main() => runApp(const HistoryPage());
 
