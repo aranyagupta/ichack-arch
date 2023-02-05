@@ -29,7 +29,7 @@ class NetTimeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Total Time Gained: ',
-      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.0),
+      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.2),
     );
   }
 }
@@ -40,7 +40,7 @@ class NetTimeValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '34 secs',
+      '46 secs',
       style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 4.0),
     );
   }
@@ -72,7 +72,23 @@ class JourneyTable extends StatelessWidget {
         DataColumn(
           label: Expanded(
             child: Text(
-              'Time Gained/Lost',
+              'Time Gained',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Time Lost',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Net Time',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ),
@@ -82,22 +98,28 @@ class JourneyTable extends StatelessWidget {
         DataRow(
           cells: <DataCell>[
             DataCell(Text('01.01.2023 at 13:49')),
-            DataCell(Text('24 minutes')),
-            DataCell(Text('8 seconds')),
+            DataCell(Text('24 mins')),
+            DataCell(Text('8 secs')),
+            DataCell(Text('3 secs')),
+            DataCell(Text('+5 secs', style: TextStyle(color: Colors.green)))
           ],
         ),
         DataRow(
           cells: <DataCell>[
             DataCell(Text('02.01.2023 at 14:29')),
-            DataCell(Text('67 minutes')),
-            DataCell(Text('48 seconds')),
+            DataCell(Text('67 mins')),
+            DataCell(Text('48 secs')),
+            DataCell(Text('2 secs')),
+            DataCell(Text('+46 secs', style: TextStyle(color: Colors.green)))
           ],
         ),
         DataRow(
           cells: <DataCell>[
             DataCell(Text('03.01.2023 at 17:12')),
-            DataCell(Text('4 minutes')),
-            DataCell(Text('1 seconds')),
+            DataCell(Text('4 mins')),
+            DataCell(Text('1 secs')),
+            DataCell(Text('6 secs')),
+            DataCell(Text('-5 secs', style: TextStyle(color: Colors.red)))
           ],
         ),
       ],
