@@ -10,7 +10,7 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.blue,
       child: Container(
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: BoxDecoration(color: Color.fromARGB(255, 113, 112, 112)),
         child: ListView(padding: EdgeInsets.all(20), children: <Widget>[
           Builder(builder: ((context) {
             return ListTile(
@@ -67,11 +67,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Life span tracker')),
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            title: Text('Life span tracker'),
+            actions: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.person,
+                      size: 26.0,
+                    ),
+                  ))
+            ]),
         drawer: MyDrawer(),
-        body: const Center(
-          child: Text(''),
-        ),
+        body: Center(
+            child: Column(children: [
+          ElevatedButton(onPressed: () {}, child: Text("Start journey"))
+        ])),
       ),
     );
   }
