@@ -65,13 +65,22 @@ class _LifePlot extends State<LifePlot> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(255, 115, 132, 146)),
+          borderRadius: BorderRadius.circular(10), color: Colors.transparent),
       margin: EdgeInsets.all(10),
       child: SizedBox(
-        child: Text("Plot"),
-        height: 170,
-        width: 300,
+        child: Column(children: [
+          Text("Net change in lifespan today:"),
+          Text(
+            "30s",
+            style: TextStyle(
+                color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Container(
+            child: Image.asset("assets/images/line-graph.png"),
+          )
+        ]),
+        height: 300,
+        width: 400,
       ),
     );
   }
@@ -96,8 +105,30 @@ class _Leaderboard extends State<Leaderboard> {
   }
 }
 
-class MyApp extends StatelessWidget {
+class Start extends StatefulWidget {
+  const Start({Key? key}) : super(key: key);
+
+  @override
+  State<Start> createState() => _StartState();
+}
+
+class _StartState extends State<Start> {
   bool journey_started = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: ElevatedButton(
+            child:
+                journey_started ? Text("Stop journey") : Text("Start journey"),
+            onPressed: () {
+              setState(() {
+                journey_started = false;
+              });
+            }));
+  }
+}
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -141,32 +172,15 @@ class MyApp extends StatelessWidget {
                 return ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.amber),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => openBrowserTab()),
-                      );
+                      openBrowserTab();
                     },
                     child: Text("Connect to Terra"));
               }),
+              SizedBox(
+                height: 10,
+              ),
+              Start(),
               SizedBox(height: 10),
-              Container(
-                  child: journey_started
-                      ? ElevatedButton(
-                          onPressed: () {
-                            setState() {
-                              journey_started = false;
-                            }
-                          },
-                          child: Text("Stop journey"))
-                      : ElevatedButton(
-                          child: Text("Start journey"),
-                          onPressed: () {
-                            setState() {
-                              journey_started = true;
-                            }
-                          },
-                        )),
               LifePlot(),
               Leaderboard()
             ])),
