@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hack_app/friends.dart';
 import 'package:hack_app/history_page.dart';
 import 'package:hack_app/profile_page.dart';
+import 'package:hack_app/terra.dart';
 
 void main() => runApp(MyApp());
 
@@ -136,6 +137,11 @@ class MyApp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+                onPressed: () => openBrowserTab(), 
+                child: Text("Connect to Terra")),
+              SizedBox(height: 10),
               Container(
                   child: journey_started
                       ? ElevatedButton(
