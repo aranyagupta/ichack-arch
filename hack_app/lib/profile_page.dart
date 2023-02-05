@@ -10,6 +10,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Profile',
+      theme: ThemeData(fontFamily: 'Raleway'),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.teal,

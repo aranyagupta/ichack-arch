@@ -109,6 +109,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Raleway'),
       home: Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.transparent,
