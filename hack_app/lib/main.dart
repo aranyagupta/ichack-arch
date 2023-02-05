@@ -80,24 +80,77 @@ class _LifePlot extends State<LifePlot> {
   }
 }
 
-class Leaderboard extends StatefulWidget {
-  const Leaderboard({super.key});
+class LeaderboardText extends StatelessWidget {
+  const LeaderboardText({super.key});
 
-  @override
-  State<Leaderboard> createState() => _Leaderboard();
-}
-
-class _Leaderboard extends State<Leaderboard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-        child: const SizedBox(
-          height: 200,
-          width: 300,
-          child: Text("Leaderboard"),
-        ));
+    return Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          'Leaderboard',
+          style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.2),
+        )
+    );
+  }
+}
+
+class LeaderboardTable extends StatelessWidget {
+  const LeaderboardTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DataTable(
+      columns: const <DataColumn>[
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Rank',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Name',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              'Time Gained/Lost',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ],
+      rows: const <DataRow>[
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('1')),
+            DataCell(Text('Rhea')),
+            DataCell(Text('+19023 secs', style: TextStyle(color: Colors.green)))
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('2')),
+            DataCell(Text('Christin')),
+            DataCell(Text('+4673 secs', style: TextStyle(color: Colors.green)))
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('3')),
+            DataCell(Text('Elijah')),
+            DataCell(Text('+2946 secs', style: TextStyle(color: Colors.green)))
+          ],
+        ),
+      ],
+    );
   }
 }
 
@@ -167,7 +220,8 @@ class MyApp extends StatelessWidget {
                           },
                         )),
               LifePlot(),
-              const Leaderboard()
+              Container(child: Text("LEADERBOARD", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))),
+              LeaderboardTable()
             ])),
       ),
     );
