@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:hack_app/main.dart';
 
 // ignore_for_file: prefer_const_literals_to_create_immutables
 class ProfilePage extends StatelessWidget {
@@ -16,6 +17,7 @@ class ProfilePage extends StatelessWidget {
             child: const Text('My Profile'),
           ),
         ),
+        drawer: MyDrawer(),
         body: ListView(
           children: <Widget>[
             Container(
