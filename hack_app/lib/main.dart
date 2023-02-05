@@ -18,6 +18,7 @@ class MyDrawer extends StatelessWidget {
         child: ListView(padding: EdgeInsets.all(20), children: <Widget>[
           Builder(builder: ((context) {
             return ListTile(
+              leading: Icon(Icons.home),
               title: Text("Home"),
               onTap: () {
                 Navigator.push(
@@ -29,6 +30,7 @@ class MyDrawer extends StatelessWidget {
           })),
           Builder(builder: ((context) {
             return ListTile(
+              leading: Icon(Icons.contacts),
               title: Text("Friends"),
               onTap: () {
                 Navigator.push(
@@ -40,6 +42,7 @@ class MyDrawer extends StatelessWidget {
           })),
           Builder(builder: ((context) {
             return ListTile(
+              leading: Icon(Icons.history),
               title: Text("Journey History"),
               onTap: () {
                 Navigator.push(
