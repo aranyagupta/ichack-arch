@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:hack_app/main.dart';
 
 class FriendsList extends StatefulWidget {
   // added based on debugger recommendation
@@ -19,6 +20,7 @@ class _FriendsList extends State<FriendsList> {
         appBar: AppBar(
           title: const Text(title),
         ),
+        drawer: MyDrawer(),
         body: ListView(
           children: const <Widget>[
             ListTile(
