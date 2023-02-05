@@ -111,11 +111,11 @@ class MyApp extends StatelessWidget {
             title: Text(
               'Lifer',
               style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
+            ),
             actions: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right: 20.0),
@@ -140,10 +140,18 @@ class MyApp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-                onPressed: () => openBrowserTab(), 
-                child: Text("Connect to Terra")),
+              Builder(builder: (context) {
+                return ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.amber),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => openBrowserTab()),
+                      );
+                    },
+                    child: Text("Connect to Terra"));
+              }),
               SizedBox(height: 10),
               Container(
                   child: journey_started

@@ -11,17 +11,21 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      theme: ThemeData(fontFamily: 'Raleway'),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(_title),
-          backgroundColor: Colors.teal,),
-        drawer: MyDrawer(),
-        body: Column(
-            children: const [NetTimeText(), NetTimeValue(), JourneyTable()]),
-      ),
-    );
+        title: _title,
+        theme: ThemeData(fontFamily: 'Raleway'),
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text(_title),
+              backgroundColor: Colors.teal,
+            ),
+            drawer: MyDrawer(),
+            body: SingleChildScrollView(
+              child: Column(children: const [
+                NetTimeText(),
+                NetTimeValue(),
+                JourneyTable()
+              ]),
+            )));
   }
 }
 
@@ -31,12 +35,11 @@ class NetTimeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        'Total Time Gained/Lost: ',
-        style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.2),
-      )
-    );
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          'Total Time Gained/Lost: ',
+          style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.2),
+        ));
   }
 }
 
