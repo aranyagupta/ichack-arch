@@ -104,6 +104,7 @@ class _Leaderboard extends State<Leaderboard> {
 }
 
 class MyApp extends StatelessWidget {
+  bool journey_started = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -114,12 +115,19 @@ class MyApp extends StatelessWidget {
             actions: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right: 20.0),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Icon(
-                      Icons.person,
-                      size: 26.0,
-                    ),
+                  child: Builder(
+                    builder: (context) {
+                      return IconButton(
+                        icon: Icon(Icons.person),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FriendsList()),
+                          );
+                        },
+                      );
+                    },
                   ))
             ]),
         drawer: MyDrawer(),
@@ -128,7 +136,23 @@ class MyApp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-              ElevatedButton(onPressed: () {}, child: Text("Start journey")),
+              Container(
+                  child: journey_started
+                      ? ElevatedButton(
+                          onPressed: () {
+                            setState() {
+                              journey_started = false;
+                            }
+                          },
+                          child: Text("Stop journey"))
+                      : ElevatedButton(
+                          child: Text("Start journey"),
+                          onPressed: () {
+                            setState() {
+                              journey_started = true;
+                            }
+                          },
+                        )),
               LifePlot(),
               Leaderboard()
             ])),
